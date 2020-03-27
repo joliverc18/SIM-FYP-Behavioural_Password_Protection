@@ -1,7 +1,15 @@
 import React, { useContext, useState } from "react";
 import Input from "../../Shared/components/FormElements/Input";
 import classes from "./Login.module.css";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Card,
+  CardGroup
+} from "react-bootstrap";
 
 import { useForm } from "../../Shared/hooks/formhook";
 import {
@@ -66,59 +74,62 @@ const Login = () => {
 
   return (
     <Container fluid className={classes.loginBG}>
-      <Row> 
-      <Col md={{ offset: 2, span: 3 }}>
-        <Card className= {classes.Card}>
-          <Card.Img
-               variant="top"
-               src="http://localhost:3000/static/media/logo.6e39278f.jpg"
-               className={classes.Img}
-             />
-            <Card.Body> 
-            <Form className={classes.Form} onSubmit={authSubmitHandler}>
-               {isLoading && <LoadingSpinner asOverlay />}
-              {hasError && <p>Invalid email or password, please try again</p>}
-              <Input
-                element="input"
-                id="email"
-                type="email"
-                label="Email"
-                errorText="Wrong email format, please try again."
-                validator={[VALIDATOR_REQUIRE()]}
-                onInput={inputHandler}
-              />
-              
+      <Row>
+        <Col md={{ offset: 2, span: 3 }}>
+          <Card className={classes.Card}>
+            <Card.Img
+              variant='top'
+              src='http://localhost:3000/static/media/logo.6e39278f.jpg'
+              className={classes.Img}
+            />
+            <Card.Body>
+              {/* <Form className={classes.Form} onSubmit={authSubmitHandler}>
+                {isLoading && <LoadingSpinner asOverlay />}
+                {hasError && <p>Invalid email or password, please try again</p>}
+                <Input
+                  element='input'
+                  id='email'
+                  type='email'
+                  label='Email'
+                  errorText='Wrong email format, please try again.'
+                  validator={[VALIDATOR_REQUIRE()]}
+                  onInput={inputHandler}
+                />
+              </Form> */}
+              <Form onSubmit={authSubmitHandler}>
+                {isLoading && <LoadingSpinner asOverlay />}
+                {hasError && <p>Invalid email or password, please try again</p>}
+                <Input
+                  element='input'
+                  id='email'
+                  type='email'
+                  label='Email'
+                  errorText='Wrong email format, please try again.'
+                  validator={[VALIDATOR_REQUIRE()]}
+                  onInput={inputHandler}
+                />
+                <Input
+                  element='input'
+                  id='password'
+                  type='password'
+                  label='Password'
+                  errorText='Password cannot be shorter than 5 characters, please try again.'
+                  validator={[VALIDATOR_MINLENGTH(5)]}
+                  onInput={inputHandler}
+                />
+                <button type='Submit' disabled={!formState.isValid}>
+                  Login
+                </button>
+              </Form>
             </Card.Body>
-        </Card>
+          </Card>
+        </Col>
       </Row>
-
-      {/* <form onSubmit={authSubmitHandler}>
-        {isLoading && <LoadingSpinner asOverlay />}
-        {hasError && <p>Invalid email or password, please try again</p>}
-        <Input
-          element="input"
-          id="email"
-          type="email"
-          label="Email"
-          errorText="Wrong email format, please try again."
-          validator={[VALIDATOR_REQUIRE()]}
-          onInput={inputHandler}
-        />
-        <Input
-          element="input"
-          id="password"
-          type="password"
-          label="Password"
-          errorText="Password cannot be shorter than 5 characters, please try again."
-          validator={[VALIDATOR_MINLENGTH(5)]}
-          onInput={inputHandler}
-        />
-        <button type="Submit" disabled={!formState.isValid}>
-          Login
-        </button>
-      </form> */}
     </Container>
   );
 };
 
 export default Login;
+
+{
+}

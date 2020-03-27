@@ -18,9 +18,10 @@
   padding-top: 40%;
 } */
 
+.Card,
 .Img,
 .Form {
-  border-radius: 25px;
+  border-radius: 25px !important;
 }
 
 .Card {
@@ -28,15 +29,16 @@
 }
 
 .Form {
+  text-align: left;
   color: rgb(97, 97, 97);
   font-family: "Lucida Bright";
 }
 
 .Button {
-  border: none;
+  border: none !important;
   width: 100%;
-  background-color: rgb(97, 97, 97);
-  color: #f1c40f;
+  background-color: rgb(97, 97, 97) !important;
+  color: #f1c40f !important;
 }
 
 .Button:hover {
